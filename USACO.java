@@ -60,13 +60,13 @@ public class USACO{
       int a = inf.nextInt();
       waste += a;
     }
-    System.out.println(waste);
+    //System.out.println(waste);
     //filling in the stomping instructions
     stompingorders = new int[lakeorders[3]][3];
     for(int i = 0; i < lakeorders[3]; i++){
       for(int j = 0; j < 3; j++){
         int a = inf.nextInt();
-        System.out.println(a);
+        //System.out.println(a);
         stompingorders[i][j] = a;
       }
     }
@@ -85,20 +85,36 @@ public class USACO{
 
   private static void stomp(int r, int c, int e){
     int[] elevations = new int[]{
+      land[r-1][c-1],
+      land[r-1][c],
+      land[r-1][c+1],
+      land[r][c-1],
       land[r][c],
       land[r][c+1],
-      land[r][c+2],
+      land[r+1][c-1],
       land[r+1][c],
-      land[r+1][c+1],
-      land[r+1][c+2],
-      land[r+2][c],
-      land[r+2][c+1],
-      land[r+2][c+2]
+      land[r+1][c+1]
     };
-    while(e > 0){
+    for(int elev = e; elev > 0; elev--){
+      int a = max(elevations);
       for(int i = 0; i < elevations.length; i++){
-        
+        if(elevations[i] == a){
+          elevations[i]--;
+          System.out.println(elevations[i]);
+        }
       }
+    }
+    land[r-1][c-1] = elevations[0];
+    land[r-1][c] = elevations[1];
+    land[r-1][c+1] = elevations[2];
+    land[r][c-1] = elevations[3];
+    land[r][c] = elevations[4];
+    land[r][c+1] = elevations[5];
+    land[r+1][c-1] = elevations[6];
+    land[r+1][c] = elevations[7];
+    land[r+1][c+1] = elevations[8];
+    for(int i = 0; i < land.length; i++){
+      System.out.println(Arrays.toString(land[i]));
     }
   }
 
@@ -121,8 +137,11 @@ public class USACO{
     }
 
     //System.out.println(land[0][0]);
-    stomp(1,1,2);
-
+    stomp(2,2,10);
+    /*int[] nums = new int[]{
+      2, 3, 4, 5, 6, 7
+    };
+    System.out.println(max(nums));*/
 
   }
 
