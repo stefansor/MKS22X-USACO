@@ -16,10 +16,10 @@ public class USACO{
 
   public static int bronze(String filename) throws FileNotFoundException{
     separator3(filename);
-    //separator1(filename);//lake comands
-    //separator2(filename);//grid
-    //separator3(filename);//stomp commands
-    return 3;//so it compiles
+    for(int i = 0; i < stompingorders.length; i++){
+      stomp(stompingorders[i][0], stompingorders[i][1], stompingorders[i][2]);
+    }
+    return lakecalc(lakeorders[2]);
   }
 //each separator will separate the lake instructions the actual elevation
 // and the stomping instructions
@@ -130,7 +130,7 @@ public class USACO{
 
 
   public static void main(String[] args) throws FileNotFoundException{
-    separator3("makelake1.txt");
+    /*separator3("makelake1.txt");
     System.out.println(Arrays.toString(lakeorders));
     for(int i = 0; i < land.length; i++){
       System.out.println(Arrays.toString(land[i]));
@@ -148,11 +148,11 @@ public class USACO{
     }
 
     System.out.println(lakecalc(22));
-    /*int[] nums = new int[]{
+    int[] nums = new int[]{
       2, 3, 4, 5, 6, 7
     };
     System.out.println(max(nums));*/
-
+    System.out.println(bronze("makelake4.txt"));
   }
 
 
