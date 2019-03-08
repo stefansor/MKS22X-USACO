@@ -26,7 +26,7 @@ public class USACO{
     lakeorders = new int[4];
     File text = new File(fn);
     Scanner inf = new Scanner(text);
-    for(int i = 0; i < 3; i++){
+    for(int i = 0; i < 4; i++){
       lakeorders[i] = inf.nextInt();
     }
   }
@@ -59,11 +59,14 @@ public class USACO{
       int a = inf.nextInt();
       waste += a;
     }
+    System.out.println(waste);
     //filling in the stomping instructions
     stompingorders = new int[lakeorders[3]][3];
     for(int i = 0; i < lakeorders[3]; i++){
       for(int j = 0; j < 3; j++){
-        stompingorders[i][j] = inf.nextInt();
+        int a = inf.nextInt();
+        System.out.println(a);
+        stompingorders[i][j] = a;
       }
     }
   }
@@ -82,8 +85,6 @@ public class USACO{
       System.out.println(Arrays.toString(land[i]));
     }
     System.out.println();
-
-    System.out.println(stompingorders[0].length);
     for(int i = 0; i < stompingorders.length; i++){
       System.out.println(Arrays.toString(stompingorders[i]));
     }
