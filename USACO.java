@@ -15,7 +15,8 @@ public class USACO{
 
 
   public static int bronze(String filename) throws FileNotFoundException{
-    separator1(filename);//lakecommands
+    separator3(filename);
+    //separator1(filename);//lake comands
     //separator2(filename);//grid
     //separator3(filename);//stomp commands
     return 3;//so it compiles
@@ -71,6 +72,36 @@ public class USACO{
     }
   }
 
+  private static int max(int[] nums){
+    int max = 0;
+    for(int i = 0; i < nums.length; i++){
+      if(nums[i] > max){
+        max = nums[i];
+      }
+    }
+    return max;
+  }
+
+
+  private static void stomp(int r, int c, int e){
+    int[] elevations = new int[]{
+      land[r][c],
+      land[r][c+1],
+      land[r][c+2],
+      land[r+1][c],
+      land[r+1][c+1],
+      land[r+1][c+2],
+      land[r+2][c],
+      land[r+2][c+1],
+      land[r+2][c+2]
+    };
+    while(e > 0){
+      for(int i = 0; i < elevations.length; i++){
+        
+      }
+    }
+  }
+
 
 
 
@@ -90,6 +121,7 @@ public class USACO{
     }
 
     //System.out.println(land[0][0]);
+    stomp(1,1,2);
 
 
   }
