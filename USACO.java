@@ -7,7 +7,7 @@ public class USACO{
   //for bronze problem
   private static int[] lakeorders;
   private static int[][] land;
-  private static int[][] newland;
+  private static int[][] newwater;
   private static int[][] stompingorders;
 
 
@@ -35,7 +35,7 @@ public class USACO{
   private static void separator2(String fn)throws FileNotFoundException{
     separator1(fn);
     land = new int[lakeorders[0]][lakeorders[1]];
-    newland = new int[lakeorders[0]][lakeorders[1]];
+    newwater = new int[lakeorders[0]][lakeorders[1]];
     File text = new File(fn);
     Scanner inf = new Scanner(text);
     //to get ride of first four ints
@@ -44,7 +44,7 @@ public class USACO{
     for(int i = 0; i < lakeorders[0]; i++){
       for(int j = 0; j < lakeorders[1]; j++){
         int a = inf.nextInt();
-        newland[i][j] = a;
+        newwater[i][j] = a;
         land[i][j] = a;
       }
     }
@@ -100,7 +100,7 @@ public class USACO{
       for(int i = 0; i < elevations.length; i++){
         if(elevations[i] == a){
           elevations[i]--;
-          System.out.println(elevations[i]);
+          //System.out.println(elevations[i]);
         }
       }
     }
@@ -113,11 +113,19 @@ public class USACO{
     land[r+1][c-1] = elevations[6];
     land[r+1][c] = elevations[7];
     land[r+1][c+1] = elevations[8];
-    for(int i = 0; i < land.length; i++){
-      System.out.println(Arrays.toString(land[i]));
-    }
   }
 
+  private static int lakecalc(int waterlevel){
+    int aggregatedepth = 0;
+    for(int i = 0; i < land.length; i++){
+      for(int j = 0; j < land[0].length; j++){
+        if(land[i][j] < waterlevel){
+          aggregatedepth += waterlevel - land[i][j];
+        }
+      }
+    }
+    return aggregatedepth * 72 * 72;
+  }
 
 
 
@@ -128,16 +136,18 @@ public class USACO{
       System.out.println(Arrays.toString(land[i]));
     }
     System.out.println();
-    for(int i = 0; i < newland.length; i++){
-      System.out.println(Arrays.toString(land[i]));
-    }
-    System.out.println();
     for(int i = 0; i < stompingorders.length; i++){
       System.out.println(Arrays.toString(stompingorders[i]));
     }
 
     //System.out.println(land[0][0]);
-    stomp(2,2,10);
+    stomp(1,4,4);
+    stomp(1, 1, 10);
+    for(int i = 0; i < land.length; i++){
+      System.out.println(Arrays.toString(land[i]));
+    }
+
+    System.out.println(lakecalc(22));
     /*int[] nums = new int[]{
       2, 3, 4, 5, 6, 7
     };
