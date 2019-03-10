@@ -9,6 +9,10 @@ public class USACO{
   private static int[][] land;
   private static int[][] newwater;
   private static int[][] stompingorders;
+  //for silver problem
+  private static int[] boardorders;
+  private static char[][] board;
+  private static int[] badgoodgrass;
 
 
 
@@ -127,6 +131,35 @@ public class USACO{
     return aggregatedepth * 72 * 72;
   }
 
+  private static void setUp(String filename)throws FileNotFoundException{
+    //sets up intructions of the board dimensions and time
+    boardorders = new int[3];
+    File text1 = new File(filename);
+    Scanner inf1 = new Scanner(text1);
+    for(int i = 0; i < 3; i++){
+      boardorders[i] = inf1.nextInt();
+    }
+    System.out.println(Arrays.toString(boardorders));
+    //sets up board with the grid in file
+    board = new char[boardorders[0]][boardorders[1]];
+    File text2 = new File(filename);
+    Scanner inf2 = new Scanner(text2);
+    //to get ride of first four ints
+    String waste = inf2.nextLine();
+    int r = 0;
+    for(int i = 0; i < boardorders[0]; i++){
+      String line = inf2.nextLine();
+      for(int j = 0; j < boardorders[1]; j++){
+        char a = line.charAt(j);
+        board[i][j] = a;
+      }
+    }
+    for(int i = 0; i < board.length; i++){
+      System.out.println(Arrays.toString(board[i]));
+    }
+
+  }
+
 
 
   public static void main(String[] args) throws FileNotFoundException{
@@ -151,8 +184,9 @@ public class USACO{
     int[] nums = new int[]{
       2, 3, 4, 5, 6, 7
     };
-    System.out.println(max(nums));*/
-    System.out.println(bronze("makelake4.txt"));
+    System.out.println(max(nums));
+    System.out.println(bronze("makelake4.txt"));*/
+    setUp("ctravel2.txt");
   }
 
 
