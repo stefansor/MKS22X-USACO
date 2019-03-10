@@ -132,7 +132,9 @@ public class USACO{
   }
 
   private static void setUp(String filename)throws FileNotFoundException{
+
     //sets up intructions of the board dimensions and time
+
     boardorders = new int[3];
     File text1 = new File(filename);
     Scanner inf1 = new Scanner(text1);
@@ -140,11 +142,12 @@ public class USACO{
       boardorders[i] = inf1.nextInt();
     }
     System.out.println(Arrays.toString(boardorders));
+
     //sets up board with the grid in file
+
     board = new char[boardorders[0]][boardorders[1]];
     File text2 = new File(filename);
     Scanner inf2 = new Scanner(text2);
-    //to get ride of first four ints
     String waste = inf2.nextLine();
     int r = 0;
     for(int i = 0; i < boardorders[0]; i++){
@@ -158,6 +161,10 @@ public class USACO{
       System.out.println(Arrays.toString(board[i]));
     }
 
+    //sets up badgoodgrass my dudes
+
+    
+    System.out.println(Arrays.toString(badgoodgrass));
   }
 
 
