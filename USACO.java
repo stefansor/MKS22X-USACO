@@ -12,7 +12,14 @@ public class USACO{
   //for silver problem
   private static int[] boardorders;
   private static char[][] board;
+  private static int[][] timestuff;
   private static int[] badgoodgrass;
+  private static int[][] moves = new int[][]{
+    {0, 1},
+    {0, -1},
+    {1, 0},
+    {-1, 0}
+  };
 
 
 
@@ -131,6 +138,10 @@ public class USACO{
     return aggregatedepth * 72 * 72;
   }
 
+
+  //-----------------------------------------------------------------------
+
+
   private static void setUp(String filename)throws FileNotFoundException{
 
     //sets up intructions of the board dimensions and time
@@ -141,7 +152,6 @@ public class USACO{
     for(int i = 0; i < 3; i++){
       boardorders[i] = inf1.nextInt();
     }
-    System.out.println(Arrays.toString(boardorders));
 
     //sets up board with the grid in file
 
@@ -157,8 +167,14 @@ public class USACO{
         board[i][j] = a;
       }
     }
-    for(int i = 0; i < board.length; i++){
-      System.out.println(Arrays.toString(board[i]));
+
+    //sets up timestuff
+
+    timestuff = new int[boardorders[0]][boardorders[1]];
+    for(int i = 0; i < boardorders[0]; i++){
+      for(int j = 0; j < boardorders[1]; j++){
+        timestuff[i][j] = 0;
+      }
     }
 
     //sets up badgoodgrass my dudes
@@ -172,10 +188,21 @@ public class USACO{
     badgoodgrass[2] = c;
     badgoodgrass[3] = d;
 
+    System.out.println(Arrays.toString(boardorders));
+    for(int i = 0; i < board.length; i++){
+      System.out.println(Arrays.toString(board[i]));
+    }
+    for(int i = 0; i < timestuff.length; i++){
+      System.out.println(Arrays.toString(timestuff[i]));
+    }
     System.out.println(Arrays.toString(badgoodgrass));
   }
 
 
+  //public static int silver(String filename){
+    //setUp(filename);
+
+  //}
 
   public static void main(String[] args) throws FileNotFoundException{
     /*separator3("makelake1.txt");
