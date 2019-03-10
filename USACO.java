@@ -162,8 +162,16 @@ public class USACO{
     }
 
     //sets up badgoodgrass my dudes
+    badgoodgrass = new int[4];
+    int a = Integer.parseInt(inf2.next());
+    int b = Integer.parseInt(inf2.next());
+    int c = Integer.parseInt(inf2.next());
+    int d = Integer.parseInt(inf2.next());
+    badgoodgrass[0] = a;
+    badgoodgrass[1] = b;
+    badgoodgrass[2] = c;
+    badgoodgrass[3] = d;
 
-    
     System.out.println(Arrays.toString(badgoodgrass));
   }
 
