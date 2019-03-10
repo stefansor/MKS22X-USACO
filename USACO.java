@@ -190,6 +190,20 @@ public class USACO{
     return true;
   }
 
+  private static boolean removeCow(int r, int c, char[][] board){
+    if(r < 0 || r >= board.length
+    || c < 0 || c >= board.length
+    || board[r][c] != 'c'){
+      return false;
+    }
+    if(board[r][c] == 'c'){
+      board[r][c] = '.';
+      return true;
+    }
+    return false;
+  }
+
+
 
   public static int silver(String filename)throws FileNotFoundException{
     setUp(filename);
@@ -226,7 +240,11 @@ public class USACO{
     System.out.println(max(nums));
     System.out.println(bronze("makelake4.txt"));*/
     setUp("ctravel2.txt");
-    addCow(0, 2, board);
+    System.out.println(addCow(0, 2, board));
+    for(int i = 0; i < board.length; i++){
+      System.out.println(Arrays.toString(board[i]));
+    }
+    System.out.println(removeCow(0,2,board));
     for(int i = 0; i < board.length; i++){
       System.out.println(Arrays.toString(board[i]));
     }
