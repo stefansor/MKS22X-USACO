@@ -12,7 +12,6 @@ public class USACO{
   //for silver problem
   private static int[] boardorders;
   private static char[][] board;
-  private static int[][] timestuff;
   private static int[] badgoodgrass;
   private static int[][] moves = new int[][]{
     {0, 1},
@@ -168,15 +167,6 @@ public class USACO{
       }
     }
 
-    //sets up timestuff
-
-    timestuff = new int[boardorders[0]][boardorders[1]];
-    for(int i = 0; i < boardorders[0]; i++){
-      for(int j = 0; j < boardorders[1]; j++){
-        timestuff[i][j] = 0;
-      }
-    }
-
     //sets up badgoodgrass my dudes
     badgoodgrass = new int[4];
     int a = Integer.parseInt(inf2.next());
@@ -188,21 +178,28 @@ public class USACO{
     badgoodgrass[2] = c;
     badgoodgrass[3] = d;
 
-    System.out.println(Arrays.toString(boardorders));
-    for(int i = 0; i < board.length; i++){
-      System.out.println(Arrays.toString(board[i]));
+  }
+
+  private static boolean addCow(int r, int c, char[][] board){
+    if(r < 0 || r >= board.length
+    || c < 0 || c >= board.length
+    || board[r][c] == '*'){
+      return false;
     }
-    for(int i = 0; i < timestuff.length; i++){
-      System.out.println(Arrays.toString(timestuff[i]));
-    }
-    System.out.println(Arrays.toString(badgoodgrass));
+    board[r][c] = 'c';
+    return true;
   }
 
 
-  //public static int silver(String filename){
-    //setUp(filename);
+  public static int silver(String filename)throws FileNotFoundException{
+    setUp(filename);
+    silverhelp(badgoodgrass[0] - 1, badgoodgrass[1] - 1, badgoodgrass[2] - 1, badgoodgrass[3] - 1, board, boardorders[2]);
+    return 1;
+  }
 
-  //}
+  private static int silverhelp(int xstart, int ystart, int xend, int yend, char[][] board, int t){
+    return 2;
+  }
 
   public static void main(String[] args) throws FileNotFoundException{
     /*separator3("makelake1.txt");
@@ -229,6 +226,10 @@ public class USACO{
     System.out.println(max(nums));
     System.out.println(bronze("makelake4.txt"));*/
     setUp("ctravel2.txt");
+    addCow(0, 2, board);
+    for(int i = 0; i < board.length; i++){
+      System.out.println(Arrays.toString(board[i]));
+    }
   }
 
 
