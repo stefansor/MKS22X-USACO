@@ -181,21 +181,18 @@ public class USACO{
   }
 
   private static boolean addCow(int r, int c, char[][] board){
+
     if(r < 0 || r >= board.length
-    || c < 0 || c >= board.length
+    || c < 0 || c >= board[0].length
     || board[r][c] == '*'){
       return false;
     }
+
     board[r][c] = 'c';
     return true;
   }
 
   private static boolean removeCow(int r, int c, char[][] board){
-    if(r < 0 || r >= board.length
-    || c < 0 || c >= board.length
-    || board[r][c] != 'c'){
-      return false;
-    }
     if(board[r][c] == 'c'){
       board[r][c] = '.';
       return true;
@@ -203,16 +200,27 @@ public class USACO{
     return false;
   }
 
-
-
   public static int silver(String filename)throws FileNotFoundException{
     setUp(filename);
-    silverhelp(badgoodgrass[0] - 1, badgoodgrass[1] - 1, badgoodgrass[2] - 1, badgoodgrass[3] - 1, board, boardorders[2]);
-    return 1;
+    return silverhelp(badgoodgrass[0] - 1, badgoodgrass[1] - 1,
+     badgoodgrass[2] - 1, badgoodgrass[3] - 1, board, boardorders[2]);
   }
 
-  private static int silverhelp(int xstart, int ystart, int xend, int yend, char[][] board, int t){
-    return 2;
+  private static int silverhelp(int r1, int c1, int r2, int c2, char[][] board, int t){
+    if(r1 == r2 && c1 == c2 && t == 0){
+      return 1;
+    }
+    if(t == 0){
+      return 0;
+    }
+    int sum = 0;
+    for(int i = 0; i < 4; i++){
+      if(addCow(r1, c1, board)){
+        sum += silverhelp(r1 + moves[i][0], c1 + moves[i][1], r2, c2, board, t - 1);
+        removeCow(r1, c1, board);
+      }
+    }
+    return sum;
   }
 
   public static void main(String[] args) throws FileNotFoundException{
@@ -239,15 +247,25 @@ public class USACO{
     };
     System.out.println(max(nums));
     System.out.println(bronze("makelake4.txt"));*/
-    setUp("ctravel2.txt");
+    /*setUp("ctravel2.txt");
     System.out.println(addCow(0, 2, board));
+    for(int i = 0; i < board.length; i++){
+      System.out.println(Arrays.toString(board[i]));
+    }
+    System.out.println(addCow(0,3,board));
     for(int i = 0; i < board.length; i++){
       System.out.println(Arrays.toString(board[i]));
     }
     System.out.println(removeCow(0,2,board));
     for(int i = 0; i < board.length; i++){
       System.out.println(Arrays.toString(board[i]));
+    }*/
+    System.out.println(silver("ctravel1.txt"));
+    System.out.println(addCow(0,4,board));
+    for(int i = 0; i < board.length; i++){
+      System.out.println(Arrays.toString(board[i]));
     }
+    System.out.println(board[0].length);
   }
 
 
