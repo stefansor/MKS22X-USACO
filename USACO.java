@@ -260,12 +260,7 @@ public class USACO{
     for(int i = 0; i < board.length; i++){
       System.out.println(Arrays.toString(board[i]));
     }*/
-    System.out.println(silver("ctravel1.txt"));
-    System.out.println(addCow(0,4,board));
-    for(int i = 0; i < board.length; i++){
-      System.out.println(Arrays.toString(board[i]));
-    }
-    System.out.println(board[0].length);
+    System.out.println(silver("ctravel5.txt"));
   }
 
 
